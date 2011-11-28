@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+Bundler.require
+
+# Compiles the stylesheets with Compass, will automagically include Twitter Bootstrap
+Compass.add_project_configuration 'compass.rb'
+compile('/stylesheets/*/') { filter :sass, Compass.sass_engine_options }
+route('/stylesheets/*/') { item.identifier.chop + '.css' }
+
+# Ignores images for compilation, but routes to them
+compile('/images/*/') { filter :binary }
+route('/images/*/') { item.identifier.chop + '.' + item[:extension] }
+
+# Compiles all haml files to html5
+compile('*') { filter :haml; layout 'default' }
+route('*') { item.identifier + 'index.html' }
+layout '*', :haml, :format => :html5

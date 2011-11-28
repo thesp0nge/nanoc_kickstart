@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title= h 'Nanoc kickstart'
+    %link{:href => relative_path_to(item_with_identifier '/stylesheets/styles/'), :rel => 'stylesheet'}
+  %body
+    .container
+      .content
+        .page-header
+          %h1= h 'Nanoc kickstart'
+        .row
+          .span16
+            = yield
