@@ -8,7 +8,7 @@ compile('/stylesheets/*/') { filter :sass, Compass.sass_engine_options }
 route('/stylesheets/*/') { item.identifier.chop + '.css' }
 
 # Ignores images for compilation, but routes to them
-compile('/images/*/') { filter :binary }
+compile('/images/*/') { }
 route('/images/*/') { item.identifier.chop + '.' + item[:extension] }
 
 # Compiles all haml files to html5
