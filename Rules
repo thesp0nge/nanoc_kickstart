@@ -13,7 +13,11 @@ end
 
 # Compiles the stylesheets with Compass, will automagically include Twitter Bootstrap
 Compass.add_project_configuration 'compass.rb'
-compile('/stylesheets/*/') { filter :sass, Compass.sass_engine_options }
+compile('/stylesheets/*/') { 
+  if ! item.binary? 
+    filter :sass, Compass.sass_engine_options 
+  end
+}
 route('/stylesheets/*/') { item.identifier.chop + '.css' }
 
 # Ignores images for compilation, but routes to them
