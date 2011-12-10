@@ -38,3 +38,6 @@ A pow-ready **config.ru**, which means you can just start this Nanoc site with y
 
 ### Custom html entity helper
 A custom version of the `h()` helper method, which will convert every special character into its matching html entity, not just the 4 provided by the standard method.
+
+## Credits
+I take some helpers from mgutz great nanoc3 blog example: https://github.com/mgutz/nanoc3_blog
