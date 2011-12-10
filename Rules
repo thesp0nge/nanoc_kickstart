@@ -2,6 +2,15 @@
 require 'bundler/setup'
 Bundler.require
 
+preprocess do
+  # authors may unpublish items by setting meta attribute publish: false
+  items.delete_if { |item| item[:publish] == false }
+
+  copy_static
+  create_tag_pages
+  add_update_item_attributes
+end
+
 # Compiles the stylesheets with Compass, will automagically include Twitter Bootstrap
 Compass.add_project_configuration 'compass.rb'
 compile('/stylesheets/*/') { filter :sass, Compass.sass_engine_options }

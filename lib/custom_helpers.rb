@@ -2,7 +2,7 @@ include Nanoc3::Helpers::Capturing
 include Nanoc3::Helpers::Rendering
 include Nanoc3::Helpers::Blogging
 include Nanoc3::Helpers::XMLSitemap
-# require 'builder'
+
 require 'fileutils'
 require 'time'
 
@@ -80,7 +80,9 @@ end
 
 # Copy static assets outside of content instead of having nanoc3 process them.
 def copy_static
-  FileUtils.cp_r 'static/.', 'output/' 
+  if File.directory? 'static/'
+    FileUtils.cp_r 'static/.', 'output/' 
+  end
 end
 
 def partial(identifier_or_item)
