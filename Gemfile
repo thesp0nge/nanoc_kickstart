@@ -3,7 +3,6 @@ source "http://rubygems.org"
 # Base and helpers
 gem 'nanoc'
 gem 'htmlentities'
-gem 'builder'
 
 # Markup and stylesheets
 gem 'haml'
