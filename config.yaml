@@ -1,6 +1,36 @@
---- 
 output_dir: output
-data_sources: 
-- items_root: /
-  layouts_root: /
-  type: filesystem_unified
+
+index_filenames: [ 'index.html' ]
+
+enable_output_diff: false
+
+data_sources:
+  - items_root: /
+    type: filesystem_unified
+    layouts_root: /
+
+deploy:
+  default:
+    dst: "goliath.armoredcode.com:/var/www/thesp0nge.com"
+    options: ['-ave ssh', '--exclude=.DS_Store', '--exclude=*~']
+
+base_url: http://thesp0nge.com
+
+google_analytics:
+  domain: thesp0nge.com
+  site_id: UA-22580002-1
+  
+# currently used by logo
+site_name: thesp0nge.com
+
+# number of full featured posts to display on front
+featured_count: 1 
+
+# number of excerpted posts to display on front
+excerpt_count: 5
+
+# number of other articles to reference at bottom of each article
+other_articles_max: 3
+
+# DISQUS Site Shortname. Comment out to disable.
+disqus_shortname: thesp0nge

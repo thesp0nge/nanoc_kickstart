@@ -1,13 +1,13 @@
 !!!
 %html
   %head
-    %title= h 'Nanoc kickstart'
+    %title #{@item[:title]} #{site_name}
     %link{:href => relative_path_to(item_with_identifier '/stylesheets/styles/'), :rel => 'stylesheet'}
   %body
     .container
       .content
         .page-header
-          %h1= h 'Nanoc kickstart'
+          %h1= h site_name
         .row
           .span16
             = yield
