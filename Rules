@@ -13,5 +13,5 @@ route('/images/*/') { item.identifier.chop + '.' + item[:extension] }
 
 # Compiles all haml files to html5
 compile('*') { filter :haml; layout 'default' }
-route('*') { item.identifier + 'index.html' }
+route('*') { route_path(item) }
 layout '*', :haml, :format => :html5
