@@ -1,0 +1,52 @@
+---
+---
+- is_embedded ||= false
+- show_lang ||= false
+
+-if is_embedded
+  %header
+    %a{:href=>"#{route_path(item)}", :title=>"Full article"}
+      %h2
+        = item[:title]
+    %h4
+      %time
+        = pretty_time(item[:created_at])
+    = render('_meta', :item => item, :show_lang=>show_lang, :is_embedded=>is_embedded, :show_social=>false)
+    .clearfix
+- else
+  %header
+    %h1
+      =item[:title]
+    %h4
+      %time
+        = pretty_time(item[:created_at])
+    = render('_meta', :item => item, :show_lang=>show_lang, :is_embedded => is_embedded, :show_social=>true) 
+    .clearfix
+    
+- if is_embedded
+  %section
+    %p
+      = item[:excerpt]
+  %footer
+    %a{:href=>"#{route_path(item)}"}
+      %span.read_more
+        Leggi tutto &raquo;
+    %hr
+  -else
+    %section
+      %p
+        %hr
+
+
+      %p 
+        != content || partial(item)
+      %p
+        %div{:id=>"disqus_thread"}
+          :javascript
+            var disqus_shortname = 'thesp0nge';
+            var disqus_identifier = '#{route_path(item)}';
+            (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
