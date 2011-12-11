@@ -24,6 +24,23 @@ route('/stylesheets/*/') { item.identifier.chop + '.css' }
 compile('/images/*/') { }
 route('/images/*/') { item.identifier.chop + '.' + item[:extension] }
 
+compile 'sitemap' do
+    filter :erb
+end
+
+route 'sitemap' do
+    item.identifier.chop + '.xml'
+end
+
+compile 'atom' do
+    filter :erb
+end
+
+route 'atom' do
+    item.identifier.chop + '.xml'
+end
+
+
 # Compiles all haml files to html5
 compile('*') { filter :haml; layout 'default' }
 #route('*') { item.identifier + 'index.html' }

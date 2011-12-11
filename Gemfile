@@ -10,6 +10,8 @@ gem 'sass'
 gem 'compass'
 gem 'compass_twitter_bootstrap'
 
+gem 'builder'
+
 # Development rack server
 gem 'rack'
 gem 'rack-rewrite', :require => 'rack/rewrite'
